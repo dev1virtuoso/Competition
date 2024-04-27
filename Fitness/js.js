@@ -134,8 +134,10 @@ if (hasGetUserMedia()) {
 
 // Enable the live webcam view and start detection.
 function enableCam(event) {
+  console.log("test and enable webcam");
   if (!poseLandmarker) {
     console.log("Wait! poseLandmaker not loaded yet.");
+    
     return;
   }
 
