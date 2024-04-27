@@ -153,11 +153,21 @@ function enableCam(event) {
   };
 
   // Activate the webcam stream.
-  navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-    video.srcObject = stream;
-    video.addEventListener("loadeddata", predictWebcam);
-  });
-}
+  // navigator.mediaDevices.getUserMedia
+  // video.srcObject = stream;
+  // video.addEventListener("loadeddata", predictWebcam);
+ //  });
+// }
+  if (navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    video.srcObject = stream;
+                    video.play();
+                })
+                .catch(function (err0r) {
+    
+                });
+            }
 
 let lastVideoTime = -1;
 async function predictWebcam() {
