@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.8.6/dist/pose.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core@3.7.0/dist/tf.js"></script>
+</head>
+<body>
+  <h1>Pose Estimation Example</h1>
+  <video id="video" width="640" height="480" preload autoplay loop muted></video>
+  <canvas id="canvas" width="640" height="480"></canvas>
+
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // 加载模型并进行姿势估计
+    const pose = new Pose({
+      locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`
+    });
+    pose.setOptions({
+      upperBodyOnly: false, // 是否仅检测上半身，默认为 false
+      smoothLandmarks: true // 是否平滑关键点，默认为 true
+    });
+    pose.onResults((results) => {
+      if (results.poseLandmarks) {
+        // 清除画布
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // 绘制关键点
+        for (const landmark of results.poseLandmarks) {
+          const x = landmark.x * canvas.width;
+          const y = landmark.y * canvas.height;
+          ctx.beginPath();
+          ctx.arc(x, y, 5, 0, 2 * Math.PI);
+          ctx.fillStyle = '#FF0000';
+          ctx.fill();
+        }
+
+        // 输出关键点坐标
+        console.log(results.poseLandmarks);
+      }
+    });
+
+    // 获取摄像头视频流
+    navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
+      video.srcObject = stream;
+      video.onloadedmetadata = () => {
+        video.play();
+        // 开始姿势估计
+        pose.reset();
+        pose.send({ image: video });
+      };
+    });
+  </script>
+</body>
+</html>
