@@ -1,0 +1,15 @@
+streamlit
+google-generativeai
+vertexai
+python-dotenv
+langchain
+PyPDF2
+chromadb
+faiss-cpu
+langchain_google_genai
+pandas
+numpy
+scipy
+scikit-learn
+matplotlib
+seaborn
