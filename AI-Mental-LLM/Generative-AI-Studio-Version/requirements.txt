@@ -12,3 +12,5 @@ scipy
 scikit-learn
 matplotlib
 seaborn
+python-dotenv
+PyYAML
