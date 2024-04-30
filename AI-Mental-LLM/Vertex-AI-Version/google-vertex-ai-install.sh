@@ -12,7 +12,7 @@
 # apt-get update && apt-get install google-cloud-cli
 
 
-# option 2 install
+# option 2 install for linux OS
 curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-473.0.0-linux-x86_64.tar.gz
 tar -xf google-cloud-cli-473.0.0-linux-x86_64.tar.gz
 ./google-cloud-sdk/install.sh
