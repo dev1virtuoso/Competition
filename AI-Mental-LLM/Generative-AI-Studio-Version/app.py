@@ -67,35 +67,37 @@ safety_settings = [
 
 
 # system instruction
-textsi_1 = """
+if "textsi_1" not in st.session_state: 
+    st.session_state.textsi_1 = """
 I am a mental health professional and I am here to help you.I am not a doctor, but I can provide you with some general information about mental health. If you are in crisis, please call 911 or go to the nearest emergency room. If you are in need of immediate help, please call the National"""
-
-textsi_2 = """
+if "textsi_2" not in st.session_state: 
+    st.session_state.textsi_2 = """
 I am a mental health professional and I am here to help you.I am not a doctor, but I can provide you with some general information about mental health."""
 
 # sample for prompt instruction
-testPrompt1 = """Is it have Depression or anxiety disorder or not, as below conversation?
+if "testPrompt1" not in st.session_state: 
+    st.session_state.testPrompt1 = """Is it have Depression or anxiety disorder or not, as below conversation?
 
     Context:"""
-
-testPrompt2 = """I don't feel like doing much of anything todays?
-
-    Context:"""
-
-testPrompt3 = """If the phrase connotes a depressed emotion, assign a number 1 to the phrase. Otherwise, a number 0.
+if "testPrompt2" not in st.session_state: 
+    st.session_state.testPrompt2 = """I don't feel like doing much of anything todays?
 
     Context:"""
-    
-testPrompt4 = """If the phrase connotes a anxiety emotion, assign a number 1 to the phrase. Otherwise, a number 0.
+if "testPrompt3" not in st.session_state:    
+    st.session_state.testPrompt3 = """If the phrase connotes a depressed emotion, assign a number 1 to the phrase. Otherwise, a number 0.
 
     Context:"""
+if "testPrompt4" not in st.session_state:    
+    st.session_state.testPrompt4 = """If the phrase connotes a anxiety emotion, assign a number 1 to the phrase. Otherwise, a number 0.
 
-testPrompt5 = """If the phrase connotes a depressed emotion, assign a number 1 to the phrase. if phrase connotes a anxiety emotion, assign a number 2 to the phrase.
+    Context:"""
+if "testPrompt5" not in st.session_state:
+    st.session_state.testPrompt5 = """If the phrase connotes a depressed emotion, assign a number 1 to the phrase. if phrase connotes a anxiety emotion, assign a number 2 to the phrase.
                 if phrase connotes both anxiety emotion and  depressed emotion, assign a number 3 to the phrase .Otherwise, a number 0.
 
     Context:"""
-
-testPrompt6 = """Summarize the following conversation, What is the Emotion of the conversation?   
+if "testPrompt6" not in st.session_state:
+    st.session_state.testPrompt6 = """Summarize the following conversation, What is the Emotion of the conversation?   
 
 Context:"""
 
@@ -122,6 +124,9 @@ if "classifyResult" not in st.session_state:
 if "responseResult" not in st.session_state:
     st.session_state.responseResult= []
 
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+
 # Calculate Depression and Anxiety Average
 def calculateDepressAnxietyAvg(result):
     if result == "0":
@@ -133,11 +138,13 @@ def calculateDepressAnxietyAvg(result):
         print("Emotion: Depressed")
         st.session_state.depressCnt += 1
         st.session_state.depressAvg = st.session_state.depressCnt/st.session_state.dialogueTotalCnt
+        st.session_state.anxietyAvg =  st.session_state.anxietyCnt/st.session_state.dialogueTotalCnt
         return
     
     elif result == "2":
         print("Emotion: Anxiety")
         st.session_state.anxietyCnt += 1
+        st.session_state.depressAvg = st.session_state.depressCnt/st.session_state.dialogueTotalCnt
         st.session_state.anxietyAvg =  st.session_state.anxietyCnt/st.session_state.dialogueTotalCnt
         return
     elif result == "3":
@@ -149,27 +156,27 @@ def calculateDepressAnxietyAvg(result):
         return
 
 # gen ai 
-geminiModel =  "gemini-1.0-pro"
+# geminiModel =  "gemini-1.0-pro"
 # geminiVisionModel = "gemini-vision-1.0-pro-002"
 
 # Set up the model
-model = genai.GenerativeModel(model_name=geminiModel,
+st.session_state.model = genai.GenerativeModel(model_name="gemini-1.0-pro",
                               generation_config=generation_config,
                               safety_settings=safety_settings,)
                               # system_instruction=textsi_2)
 
 
-def initChatMode():
-  convo = model.start_chat(history=[])
-  return convo
+# def initChatMode():
+#   st.session_state.convo = st.session_state.model.start_chat(history=[])
+#   return st.session_state.convo
 # convo = model.start_chat(history=[])
-convo= initChatMode()
+st.session_state.convo= st.session_state.model.start_chat(history=[])
 
 
 
 # chat mode 
 def singleChat(message):
-  response = convo.send_message(
+  response = st.session_state.convo.send_message(
       [message],
       generation_config=generation_config,
       safety_settings=safety_settings
@@ -178,27 +185,27 @@ def singleChat(message):
 
 
 # Generate response function with Instruction Prompt Template for Generate Contenct 
-def generateResponseInstr(prompTemp,message):
-    response = model.generate_content(f"""
+def generateResponseInstr(prompTemp, message):
+    response = st.session_state.model.generate_content(f"""
     {prompTemp}
     {message}""")
     # print(response.text)
     return response, response.text
 
 def generateResponse(message):
-    response = model.generate_content(f"""
+    response = st.session_state.model.generate_content(f"""
     {message}""")
     # print(response.text)
     return response.text
   
 
 def sendMessage(message):
-    response = convo.send_message(message)
+    response = st.session_state.convo.send_message(message)
     return  response.text  #convo.last.text
   
 def chatHistorySummary():
-    print(convo.history)
-    _, response = generateResponseInstr(testPrompt6, convo.history)
+    # print(st.session_state.chat_history)
+    _, response = generateResponseInstr(st.session_state.testPrompt6, st.session_state.chat_history)
     # print(response.text)
     return response
 
@@ -218,8 +225,10 @@ chatHist = st.button("Chat History Emotion Summary")
 # Check if the button is clicked
 if submit:
     # response = generateResponse(input1)
-    _, response = generateResponseInstr(testPrompt5, input1) # classifier for 
+    _, response = generateResponseInstr(st.session_state.testPrompt5, input1) # classifier for 
+    st.session_state.chat_history.append(("user", input1))
     responseChat = sendMessage(input1)
+    st.session_state.chat_history.append(("Bot", responseChat))
     print(response)
     st.session_state.classifyResult.append(response) # append result
     st.session_state.dialogueTotalCnt +=1
