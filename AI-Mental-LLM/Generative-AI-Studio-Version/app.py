@@ -15,7 +15,7 @@ Require install streamlit for UI
 
 import streamlit as st  # import stremlit
 import plotly.express as px  # pip install plotly-express
-import os, json, re
+import os, json, re, random
 import pandas as pd
 from dotenv import load_dotenv # load environment variable
 import base64
@@ -233,6 +233,20 @@ def chatHistorySummary():
     # print(response.text)
     return response
 
+def generateIntervention():
+    selectedInterventionList = [1, 2, 5,6,8,7,8]
+    selectedIntervention = random.choice(selectedInterventionList)
+    print(f"Selected Intervention: {selectedIntervention}")
+    if st.session_state.depressAvg >= 0.5 and st.session_state.anxietyAvg <= 0.5:
+        return "Recommend A"
+    elif st.session_state.anxietyAvg <= 0.5 and st.session_state.depressAvg >= 0.5:
+        return "Recommend B"
+    elif st.session_state.anxietyAvg >= 0.5 and st.session_state.depressAvg >= 0.5:
+        return "Recommend C"
+    elif st.session_state.anxietyAvg <= 0.5 and st.session_state.depressAvg <= 0.5:
+        return "Recommend D"
+    elif st.session_state.anxietyAvg >= 0.5 and st.session_state.depressAvg <= 0.5:
+        return "Recommend E"
 
 # initialize out stremlit app
 st.set_page_config(page_title="AI Mental Health Detection", page_icon="🧠", layout="wide", initial_sidebar_state="expanded")
@@ -243,6 +257,7 @@ input1 = left_column.text_input("Enter your message here about your feel and thi
 # input = st.text_area("Enter your message here", "I am feeling sad today")
 submit = left_column.button("Chat")
 chatHist = left_column.button("Chat History Emotion Summary")
+intervent = left_column.button("Generate Intervention")
 exportEmotion = right_column.button("Export Emotion History")
 
     
@@ -291,3 +306,9 @@ if exportEmotion:
     else:   
         st.session_state.df3.to_csv("emotion_history.csv", index=False)
         right_column.write("Export Emotion History to CSV file")
+
+
+if intervent:
+    left_column.subheader("Generate Intervention:")
+    recommend = generateIntervention()
+    left_column.write(recommend)
