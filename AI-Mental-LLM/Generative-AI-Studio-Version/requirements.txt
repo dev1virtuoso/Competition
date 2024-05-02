@@ -14,3 +14,5 @@ matplotlib
 seaborn
 python-dotenv
 PyYAML
+plotly
+plotly-express

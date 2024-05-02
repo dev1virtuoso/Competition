@@ -14,7 +14,9 @@ Require install streamlit for UI
 """
 
 import streamlit as st  # import stremlit
-import os
+import plotly.express as px  # pip install plotly-express
+import os, json, re
+import pandas as pd
 from dotenv import load_dotenv # load environment variable
 import base64
 import google.generativeai as genai
@@ -100,7 +102,22 @@ if "testPrompt6" not in st.session_state:
     st.session_state.testPrompt6 = """Summarize the following conversation, What is the Emotion of the conversation?   
 
 Context:"""
+if "testPrompt7" not in st.session_state:
+    st.session_state.testPrompt7 = """Classify Emotion into depressed, anxiety , both anxiety and depressed , not anxiety and not depressed from as below context.
 
+    Context:"""
+
+if "testPrompt8" not in st.session_state:
+    st.session_state.testPrompt8 = """
+    For each phrase, read the phrase carefully and assign a number based on the emotion it connotes:
+
+1: If the phrase connotes a depressed emotion (e.g. sadness, despair, hopelessness)
+2: If the phrase connotes an anxiety emotion (e.g. fear, worry, nervousness)
+3: If the phrase connotes both anxiety and depressed emotions
+0: If the phrase does not connote either anxiety or depressed emotions (e.g. neutral, happy, excited).
+
+Output format in JSON with text and emtion , without explanation the reason for the emotion.
+Context: """
 
 # Score for Depression and Anxiety initial value
 if "depressCnt" not in st.session_state:
@@ -126,34 +143,41 @@ if "responseResult" not in st.session_state:
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
+    
+if "depressHist" not in st.session_state:
+    st.session_state.depressHist = [] # {}
+    
+if "anxietyHist" not in st.session_state:
+    st.session_state.anxietyHist = [] # {}
 
 # Calculate Depression and Anxiety Average
 def calculateDepressAnxietyAvg(result):
+    output = ""
     if result == "0":
-        print("Emotion: Not Depressed or Anxiety")
-        st.session_state.depressAvg = st.session_state.depressCnt/st.session_state.dialogueTotalCnt
-        st.session_state.anxietyAvg =  st.session_state.anxietyCnt/st.session_state.dialogueTotalCnt
-        return
+        output = "Emotion: Not Depressed or Anxiety"
+        print(output)
+ 
     elif result == "1":
-        print("Emotion: Depressed")
+        output = "Emotion: Depressed"
+        print(output)
         st.session_state.depressCnt += 1
-        st.session_state.depressAvg = st.session_state.depressCnt/st.session_state.dialogueTotalCnt
-        st.session_state.anxietyAvg =  st.session_state.anxietyCnt/st.session_state.dialogueTotalCnt
-        return
     
     elif result == "2":
-        print("Emotion: Anxiety")
+        output = "Emotion: Anxiety"
+        print(output)
         st.session_state.anxietyCnt += 1
-        st.session_state.depressAvg = st.session_state.depressCnt/st.session_state.dialogueTotalCnt
-        st.session_state.anxietyAvg =  st.session_state.anxietyCnt/st.session_state.dialogueTotalCnt
-        return
+  
     elif result == "3":
-        print("Emotion: Both Anxiety and Depressed")
+        output = "Emotion: Both Anxiety and Depressed"
+        print(output)
         st.session_state.depressCnt += 1
         st.session_state.anxietyCnt += 1
-        st.session_state.depressAvg = st.session_state.depressCnt/st.session_state.dialogueTotalCnt
-        st.session_state.anxietyAvg =  st.session_state.anxietyCnt/st.session_state.dialogueTotalCnt
-        return
+    
+    st.session_state.depressAvg = st.session_state.depressCnt/st.session_state.dialogueTotalCnt
+    st.session_state.anxietyAvg =  st.session_state.anxietyCnt/st.session_state.dialogueTotalCnt
+    st.session_state.depressHist.append(st.session_state.depressAvg)
+    st.session_state.anxietyHist.append(st.session_state.anxietyAvg)
+    return output
 
 # gen ai 
 # geminiModel =  "gemini-1.0-pro"
@@ -211,15 +235,15 @@ def chatHistorySummary():
 
 
 # initialize out stremlit app
-st.set_page_config(page_title="AI Mental Health Detection", page_icon="🧠", layout="centered", initial_sidebar_state="expanded")
+st.set_page_config(page_title="AI Mental Health Detection", page_icon="🧠", layout="wide", initial_sidebar_state="expanded")
 
 st.header("Gemini LLM AI Mental Health Detection Application")
-
-input1 = st.text_input("Enter your message here", key="input1", value="What is your feeling today?")
+left_column, right_column = st.columns(2)
+input1 = left_column.text_input("Enter your message here about your feel and thinking", key="input1", value="What is your feeling today?")
 # input = st.text_area("Enter your message here", "I am feeling sad today")
-submit = st.button("Chat")
-chatHist = st.button("Chat History Emotion Summary")
-
+submit = left_column.button("Chat")
+chatHist = left_column.button("Chat History Emotion Summary")
+exportEmotion = right_column.button("Export Emotion History")
 
     
 # Check if the button is clicked
@@ -229,19 +253,41 @@ if submit:
     st.session_state.chat_history.append(("user", input1))
     responseChat = sendMessage(input1)
     st.session_state.chat_history.append(("Bot", responseChat))
-    print(response)
+    # print(response)
     st.session_state.classifyResult.append(response) # append result
     st.session_state.dialogueTotalCnt +=1
-    calculateDepressAnxietyAvg(response) # calculate average Depress Ave
+    st.session_state.emotion = calculateDepressAnxietyAvg(response) # calculate average Depress Ave
     print(f"Result: Depress Avg: { st.session_state.depressAvg:6.4f} Anxiety Avg:  {st.session_state.anxietyAvg:6.4f}  Total Dialogue: {st.session_state.dialogueTotalCnt}  Depress: {st.session_state.depressCnt} Anxiety: { st.session_state.anxietyCnt} ")
-    st.subheader("AI Bot response is")
-    st.write(responseChat)
+    left_column.subheader("AI Bot response is")
+    left_column.write(responseChat)
+    df1 = pd.DataFrame(st.session_state.depressHist, columns=["depression"])
+    df2 = pd.DataFrame(st.session_state.anxietyHist, columns=["anxiety"])
+    # print("Depress Hist: \n", df1.head())
+    # print("Anxiety Hist: \n", df2.head())
+    st.session_state.df3 = pd.concat([df1, df2], axis=1) #combine two dataframe for ploting 
+    print("Combine Hist: \n", st.session_state.df3.head())
+    st.session_state.figDepress = px.line(st.session_state.df3, x=st.session_state.df3.index, y=["depression","anxiety"], title="Depression and Anxiety Score In Dialogues", 
+                                          labels={"x":"Dialogue Count", "y":"Score"}, line_shape="spline", render_mode="svg", color_discrete_sequence=["blue", "green"], 
+                                          template="plotly_dark", symbol_map={"depression":"circle", "anxiety":"circle"}) 
+    st.session_state.figDepress.update_layout(yaxis_range=[-0.2, 1.2] , 
+                                              xaxis_title="Dialogue Count", yaxis_title="Score", 
+                                              title="Depression and Anxiety Score In Dialogues",
+                                              xaxis_tickformat="d", yaxis_tickformat=".2f")
+    right_column.plotly_chart(st.session_state.figDepress) # update the i
+    right_column.write(f"Last {st.session_state.emotion}")
+    
 
 if chatHist:
-    st.subheader("Chat History Emotion Summary")
+    left_column.subheader("Chat History Emotion Summary")
     response = chatHistorySummary()
     print(response)
-    st.subheader("AI Bot response is")
-    st.write(response)
+    left_column.subheader("AI Bot response is")
+    left_column.write(response)
 
 
+if exportEmotion:
+    if "df3" not in st.session_state:
+        right_column.write("Not Emotion History can export!")
+    else:   
+        st.session_state.df3.to_csv("emotion_history.csv", index=False)
+        right_column.write("Export Emotion History to CSV file")
