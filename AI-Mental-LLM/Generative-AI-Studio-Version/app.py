@@ -66,6 +66,9 @@ safety_settings = [
     "threshold": "BLOCK_MEDIUM_AND_ABOVE"
   },
 ]
+# Define the dataset file
+llmGenTrain = "lllm_generate_datasets_depress_anxioty.csv"
+st.session_state.multEmotionDF = pd.read_csv(llmGenTrain)
 
 
 # system instruction
