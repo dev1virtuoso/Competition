@@ -97,6 +97,12 @@ if "testPrompt8" not in st.session_state:
 Output format in JSON with text and emtion , without explanation the reason for the emotion.
 Context: """
 
+if "testPrompt12" not in st.session_state:
+    st.session_state.testPrompt12 = """Summarize the following conversation, What is the Emotion of the conversation?   
+
+Context:"""
+
+
 
 # Score for Depression and Anxiety initial value
 if "depressCnt" not in st.session_state:
@@ -122,6 +128,12 @@ if "responseResult" not in st.session_state:
     
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
+
+if "user_history" not in st.session_state:
+    st.session_state.user_history = []
+    
+if "bot_history" not in st.session_state:
+    st.session_state.bot_history = []
     
 if "depressHist" not in st.session_state:
     st.session_state.depressHist = [] #{}
@@ -227,16 +239,34 @@ def generateIntervention():
     selectedIntervention = random.choice(selectedInterventionList)
     print(f"Selected Intervention: {selectedIntervention}")
     if st.session_state.depressAvg >= 0.5 and st.session_state.anxietyAvg <= 0.5:
-        return "Recommend A"
+        return "Recommend : Humor and Fun"
     elif st.session_state.anxietyAvg <= 0.5 and st.session_state.depressAvg >= 0.5:
-        return "Recommend B"
+        return "Recommend : Humor and Fun"
     elif st.session_state.anxietyAvg >= 0.5 and st.session_state.depressAvg >= 0.5:
-        return "Recommend C"
+        return "Recommend : Mindfulness"
     elif st.session_state.anxietyAvg <= 0.5 and st.session_state.depressAvg <= 0.5:
-        return "Recommend D"
-    elif st.session_state.anxietyAvg >= 0.5 and st.session_state.depressAvg <= 0.5:
-        return "Recommend E"
+        return "Recommend : Humor and Fun"
     
+def generatePromptTrainMulti(df):
+    out= ""
+    numberSamples = 5
+    offset = 0
+    label0= df[df["label"] == 0]
+    label1 = df[df["label"]== 1]
+    label2= df[df["label"] == 2]
+    label3 = df[df["label"]== 3]
+    for i in range(numberSamples):
+        out += f"""{label0["text"].iloc[i+offset]} {int(label0["label"].iloc[i+offset])}\n{label1["text"].iloc[i+offset]} {int(label1["label"].iloc[i+offset])}\n{label2["text"].iloc[i+offset]} {int(label2["label"].iloc[i+offset])}\n{label3["text"].iloc[i+offset]} {int(label3["label"].iloc[i+offset])}\n"""
+    out += f"""Context:"""
+    return out
+
+llmGenTrain = "lllm_generate_datasets_depress_anxioty.csv"
+# Load Train dataset 
+st.session_state.multEmotionDF = pd.read_csv(llmGenTrain)
+
+st.session_state.genPromptMult =  generatePromptTrainMulti(st.session_state.multEmotionDF)
+print("Generate Prompt for few Shot Learning: ", st.session_state.genPromptMult)
+
 # initialize out stremlit app
 st.set_page_config(page_title="AI Mental Health Detection", page_icon="🧠", layout="wide", initial_sidebar_state="expanded")
 
@@ -257,11 +287,13 @@ exportEmotion = right_column.button("Export Emotion History")
 # Check if the button is clicked
 if submit:
     # response = generateResponse(input1)
-    _, response = generateResponseInstr(st.session_state.testPrompt5, input1) # classifier for 
+    _, response = generateResponseInstr(st.session_state.genPromptMult + st.session_state.testPrompt5, input1) # classifier for 
     # responseChat = sendMessage(input1)
     st.session_state.chat_history.append(("user", input1))
+    st.session_state.user_history.append(input1)
     responseChat = sendMessage(input1)
     st.session_state.chat_history.append(("Bot", responseChat))
+    st.session_state.bot_history.append(responseChat)
     # print(response)
     st.session_state.classifyResult.append(response) # append result
     st.session_state.dialogueTotalCnt +=1
@@ -284,6 +316,9 @@ if submit:
                                               xaxis_tickformat="d", yaxis_tickformat=".2f")
     right_column.plotly_chart(st.session_state.figDepress) # update the i
     right_column.write(f"Last {st.session_state.emotion}")
+    for i, msg in enumerate(st.session_state.user_history): # for chat history
+        right_column.markdown("Chat " + str(i) + " : " + msg)
+
 
 
 if chatHist:
