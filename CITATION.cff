@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Carson"
+  given-names: "Wu"
+  orcid: "https://orcid.org/0009-0004-2238-8912"
+title: "Carson's Projects"
+version:1.0.0.0
+date-released: 2024-8-10
+url: "https://github.com/Carson-We"
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Carson"
+    given-names: "Wu"
+    orcid: "https://orcid.org/0009-0004-2238-8912"
+  journal: "Carson's Projects"
+  month: 8
+  start: 1 # First page number
+  end: 10 # Last page number
+  title: "Carson's Projects"
+  issue: 0
+  volume: 0
+  year: 2024
