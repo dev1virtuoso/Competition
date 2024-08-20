@@ -45,4 +45,5 @@ If you have any questions or suggestions regarding this competition project, ple
 Thank you for your interest and contributions to the project!
 
 ## Deployment
+
 [Hackathon-2024-Fitness](https://carson-we.github.io/Competition/Hackathon-2024/Fitness/)
