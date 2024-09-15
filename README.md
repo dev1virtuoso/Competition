@@ -1,12 +1,12 @@
 # Repository for Competition Project
 
-This GitHub repository serves as a central location for storing the code of my competition project. The project is licensed under the Mozilla Public License Version 2.0.
+This GitHub repository serves as a central location for storing the code of my competition project. The project is licensed under the The Carson Open Source License (CEOSL) Version 2.0.
 
 ## License
 
-This repository is licensed under the Carson Open Source License, which provides users and contributors with the freedom to copy, modify, distribute, and sublicense the software under certain conditions. The project is governed by the Mozilla Public License Version 2.0 in addition to the terms outlined in this license.
+This repository is licensed under the Carson Open Source License, which provides users and contributors with the freedom to copy, modify, distribute, and sublicense the software under certain conditions. The project is governed by the The Carson Open Source License (CEOSL) Version 2.0 in addition to the terms outlined in this license.
 
-For a detailed understanding of the terms and conditions of the Mozilla Public License Version 2.0, please refer to the [LICENSE](LICENSE) file in this repository.
+For a detailed understanding of the terms and conditions of the The Carson Open Source License (CEOSL) Version 2.0, please refer to the [LICENSE](LICENSE) file in this repository.
 
 ## Using MonoRepo Approach
 
@@ -36,7 +36,7 @@ Contributions to this {template} project are highly appreciated. If you wish to 
 - Make your changes and thoroughly test them.
 - Submit a pull request describing the modifications and the rationale behind them.
 
-By contributing to this project, you agree to license your contributions under the terms of the Mozilla Public License Version 2.0.
+By contributing to this project, you agree to license your contributions under the terms of the The Carson Open Source License (CEOSL) Version 2.0.
 
 ## Contact Information
 

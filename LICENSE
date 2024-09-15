@@ -1,56 +1,38 @@
-Carson Open Source License with Mozilla Public License 2.0Carson Open Source License based on Mozilla Public License 2.0 (CEOSL-MPL 2.0)
+# The Carson Open Source License (CEOSL)
 
-Copyright © 2023-2024 Carson Wu. All rights reserved.
+1. Definitions:
+   - User: Refers to any individual, organization, or entity using the software covered by the license.
+   - Software: Denotes the software and accompanying documentation.
 
-1. Definitions
+2. Grant and Permission of Use:
+   - Users are granted rights to copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software.
+   - Others can also exercise these rights if they comply with the license terms.
 
-1.1. "User" refers to any individual, organization, or entity utilizing the software covered under this license.
+3. Modification Guidelines:
+   - Modifications must be provided in an open-source form.
+   - All modifications must adhere to the terms of the license.
 
-1.2. "Software" denotes the software and accompanying documentation.
+4. Additional Code:
+   - Extra code may be subject to different licensing terms beyond those of the original software.
 
-2. Grant and Permission of Use
+5. Enhanced Grant and Permission of Use:
+   - Users can release both original and modified code in an open-source format.
+   - The software can be used, modified, and distributed while following the license terms.
 
-Users are granted the following rights under this license:
+6. Constraints and Requirements:
+   - Modified code must be shared under the same licensing terms.
+   - Detailed documentation of modifications, including rationales, must be provided.
+   - Commercial use of the software is restricted.
+   - Endorsing or recommending the software in the original author's name is prohibited.
+   - Preventing others from using, modifying, and distributing modified code in a closed-source manner is forbidden.
 
-- Copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software.
-- Permit others to exercise these same rights, provided they comply with the license terms.
+7. Disclaimer:
+   - The software is provided "as is," without any explicit or implied warranties.
+   - The author or copyright holder is not liable for claims, damages, or other liabilities.
 
-3. Modification Guidelines
+8. Termination:
+   - Violation of the license terms will lead to the immediate termination of rights.
 
-- Modifications to the software must be made available in an open-source form.
-- All modifications must adhere to the terms of this license.
+9. Final Terms:
 
-4. Additional Code
-
-- Any additional code may be subjected to different licensing terms beyond those of the original software.
-
-5. Mozilla Public License 2.0
-
-In conjunction with this license, the software is also governed by the Mozilla Public License 2.0, accessible at the following location:
-
-Mozilla Public License 2.0: [Mozilla Public License 2.0](https://www.mozilla.org/MPL/2.0/)
-
-6. Enhanced Grant and Permission of Use
-
-- Users retain the right to release both the original and modified code in an open-source format.
-- The software may be utilized, modified, and distributed while adhering to the terms of this license.
-
-7. Constraints and Requirements
-
-- Modified code must be shared under the same licensing terms.
-- Detailed documentation of modifications, including rationales, must be provided.
-- Commercial use of the software is restricted.
-- Endorsing or recommending the software in the original author's name is prohibited.
-- Preventing others from using, modifying, and distributing modified code in a closed-source manner is forbidden.
-
-8. Disclaimer
-
-The software is provided "as is," without any explicit or implied warranties. The author or copyright holder shall not be liable for any claims, damages, or other liabilities.
-
-9. Termination
-
-Violation of this license's terms will lead to immediate termination of rights, necessitating the cessation of software usage, modification, and distribution.
-
-10. Final Terms
-
-This license serves as the comprehensive agreement between users and the original author concerning the software, superseding any prior oral or written agreements.
+- The license acts as the comprehensive agreement between users and the original author regarding the software, superseding any prior agreements.
