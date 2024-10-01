@@ -1,38 +1,9 @@
-# The Carson Open Source License (CEOSL)
+MIT License
 
-1. Definitions:
-   - User: Refers to any individual, organization, or entity using the software covered by the license.
-   - Software: Denotes the software and accompanying documentation.
+Copyright (c) 2023 - 2024 Carson Wu
 
-2. Grant and Permission of Use:
-   - Users are granted rights to copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software.
-   - Others can also exercise these rights if they comply with the license terms.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge,publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-3. Modification Guidelines:
-   - Modifications must be provided in an open-source form.
-   - All modifications must adhere to the terms of the license.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-4. Additional Code:
-   - Extra code may be subject to different licensing terms beyond those of the original software.
-
-5. Enhanced Grant and Permission of Use:
-   - Users can release both original and modified code in an open-source format.
-   - The software can be used, modified, and distributed while following the license terms.
-
-6. Constraints and Requirements:
-   - Modified code must be shared under the same licensing terms.
-   - Detailed documentation of modifications, including rationales, must be provided.
-   - Commercial use of the software is restricted.
-   - Endorsing or recommending the software in the original author's name is prohibited.
-   - Preventing others from using, modifying, and distributing modified code in a closed-source manner is forbidden.
-
-7. Disclaimer:
-   - The software is provided "as is," without any explicit or implied warranties.
-   - The author or copyright holder is not liable for claims, damages, or other liabilities.
-
-8. Termination:
-   - Violation of the license terms will lead to the immediate termination of rights.
-
-9. Final Terms:
-
-- The license acts as the comprehensive agreement between users and the original author regarding the software, superseding any prior agreements.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

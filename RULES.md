@@ -40,4 +40,4 @@
 - Ensure that all contributions are made under the project's specified license.
 - Respect the licensing of third-party libraries and assets.
 
-If you have any questions or need clarification on these rulesets, feel free to reach out to us at [following methods](https://carson-we.github.io/contact.html). Thank you for your contributions to this repository!
+If you have any questions or need clarification on these rulesets, feel free to reach out to us at [following methods](https://carson-we.github.io/Carson-We.github.io/contact.html). Thank you for your contributions to this repository!
