@@ -4,7 +4,7 @@
 
 At this repository, we take security seriously. If you discover a security issue, please report it to us immediately. We appreciate your efforts to disclose the issue responsibly and will work to acknowledge and address it promptly.
 
-To report a security vulnerability, please email me at [following methods](https://carson-we.github.io/Carson-We.github.io/contact.html) with a detailed description of the vulnerability and steps to reproduce it.
+To report a security vulnerability, please email me at [following methods](https://dev1virtuoso.github.io/dev1virtuoso.github.io/contact.html) with a detailed description of the vulnerability and steps to reproduce it.
 
 ## Response Timeline
 

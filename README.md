@@ -40,10 +40,10 @@ By contributing to this project, you agree to license your contributions under t
 
 ## Contact Information
 
-If you have any questions or suggestions regarding this competition project, please feel free to contact me at [following methods](https://carson-we.github.io/Carson-We.github.io/contact.html).
+If you have any questions or suggestions regarding this competition project, please feel free to contact me at [following methods](https://dev1virtuoso.github.io/dev1virtuoso.github.io/contact.html).
 
 Thank you for your interest and contributions to the project!
 
 ## Deployment
 
-[Hackathon-2024-Fitness](https://carson-we.github.io/Competition/Hackathon-2024/Fitness/)
+[Hackathon-2024-Fitness](https://dev1virtuoso.github.io/Competition/Hackathon-2024/Fitness/)
