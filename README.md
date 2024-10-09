@@ -40,7 +40,7 @@ By contributing to this project, you agree to license your contributions under t
 
 ## Contact Information
 
-If you have any questions or suggestions regarding this competition project, please feel free to contact me at [following methods](https://dev1virtuoso.github.io/dev1virtuoso.github.io/contact.html).
+If you have any questions or suggestions regarding this competition project, please feel free to contact me at [following methods](https://github.com/dev1virtuoso/Documentation/blob/main/dev1virtuoso/Attachment/dev1virtuoso/carson-wu.md).
 
 Thank you for your interest and contributions to the project!
 
