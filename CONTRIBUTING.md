@@ -2,7 +2,7 @@
 
 Welcome to this repository! We appreciate your interest in contributing to this repository.
 
-If you have any questions or need assistance, please feel free to contact me at [following methods](https://github.com/dev1virtuoso/Documentation/blob/main/dev1virtuoso/Attachment/dev1virtuoso/carson-wu.md).
+If you have any questions or need assistance, please feel free to contact me through [following methods](https://github.com/dev1virtuoso/Documentation/blob/main/dev1virtuoso/Attachment/dev1virtuoso/carson-wu.md).
 
 ## Issues
 
@@ -36,6 +36,6 @@ We will review your pull request and provide feedback. Thank you for your contri
 
 ## Contact
 
-If you have any questions or need further assistance, feel free to reach out to me at [following methods](https://github.com/dev1virtuoso/Documentation/blob/main/dev1virtuoso/Attachment/dev1virtuoso/carson-wu.md). We value your input and contributions.
+If you have any questions or need further assistance, feel free to reach out to me through [following methods](https://github.com/dev1virtuoso/Documentation/blob/main/dev1virtuoso/Attachment/dev1virtuoso/carson-wu.md). We value your input and contributions.
 
 Thank you for being a part of this repository!
