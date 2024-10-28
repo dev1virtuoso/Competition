@@ -1,13 +1,13 @@
 # VEX IQ 2024
 
 ## Robots
-Ivy
+Ivy (Operational)
 ![Ivy](assets/ivy.jpeg)
 
-Sophie
+Sophie (Retired)
 ![Sophie](assets/sophie.jpeg)
 
-Winter
+Winter (Under Construction)
 ![Winter](assets/winter.jpeg)
 
 ## Members
