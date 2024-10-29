@@ -10,6 +10,11 @@ Sophie (Retired)
 Winter (Under Construction)
 ![Winter](assets/winter.jpeg)
 
+aespa (Under Construction)
+![aespa(Under Construction)](assets/aespa-constructing-1.jpeg)!
+![aespa(Under Testing)](assets/aespa-testing-1.jpeg)
+
+
 ## Members
   - Carson Wu
   - Kenny Ho
