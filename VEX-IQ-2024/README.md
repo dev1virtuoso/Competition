@@ -10,7 +10,7 @@ Sophie
 - ![Sophie](assets/sophie.jpeg)
 
 Winter
-- Winter (Under Construction)
+- Winter (Retired)
 - ![Winter](assets/winter.jpeg)
 
 aespa
