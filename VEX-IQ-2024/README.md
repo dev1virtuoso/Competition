@@ -1,18 +1,24 @@
 # VEX IQ 2024
 
 ## Robots
-Ivy (Operational)
-![Ivy](assets/ivy.jpeg)
+Ivy
+- Ivy (Operational)
+- ![Ivy](assets/ivy.jpeg)
 
-Sophie (Retired)
-![Sophie](assets/sophie.jpeg)
+Sophie
+- Sophie (Retired)
+- ![Sophie](assets/sophie.jpeg)
 
-Winter (Under Construction)
-![Winter](assets/winter.jpeg)
+Winter
+- Winter (Under Construction)
+- ![Winter](assets/winter.jpeg)
 
-aespa (Under Construction)
-![aespa(Under Construction)](assets/aespa-constructing-1.jpeg)!
-![aespa(Under Testing)](assets/aespa-testing-1.jpeg)
+aespa
+
+- aespa (Under Construction)
+- ![aespa(Under Construction)](assets/aespa-constructing-1.jpeg)
+- aespa(Under Testing)
+- ![aespa(Under Testing)](assets/aespa-testing-1.jpeg)
 
 
 ## Members
