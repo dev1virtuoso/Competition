@@ -327,6 +327,7 @@ yarn-error.log*
 
 # Operating System specific files
 .DS_Store
+**/.DS_Store
 Thumbs.db
 
 # Editor/IDE specific files

@@ -40,4 +40,4 @@
 - Ensure that all contributions are made under the project's specified license.
 - Respect the licensing of third-party libraries and assets.
 
-If you have any questions or need clarification on these rulesets, feel free to reach out to us through [following methods](https://github.com/dev1virtuoso/Documentation/blob/main/dev1virtuoso/Attachment/dev1virtuoso/carson-wu.md). Thank you for your contributions to this repository!
+If you have any questions or need clarification on these rulesets, feel free to reach out to us through [following methods](https://github.com/dev1virtuoso/Documentation/blob/main/dev1virtuoso/Attachment/dev1virtuoso/carson-wu.md#Contact). Thank you for your contributions to this repository!

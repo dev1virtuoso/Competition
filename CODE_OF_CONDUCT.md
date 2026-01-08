@@ -114,7 +114,7 @@ community.
 
 ## Reporting Guidelines for Unacceptable Behavior.
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting me through [following methods](https://github.com/dev1virtuoso/Documentation/blob/main/dev1virtuoso/Attachment/dev1virtuoso/carson-wu.md). All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. Project maintainers are obligated to maintain confidentiality with regard to the reporter of an incident.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting me through [following methods](https://github.com/dev1virtuoso/Documentation/blob/main/dev1virtuoso/Attachment/dev1virtuoso/carson-wu.md#Contact). All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. Project maintainers are obligated to maintain confidentiality with regard to the reporter of an incident.
 
 This Code of Conduct is adapted from the Contributor Covenant, version 1.4, available at [https://www.contributor-covenant.org/version/1/4/code-of-conduct.html](https://www.contributor-covenant.org/version/1/4/code-of-conduct.html)
 
