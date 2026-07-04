@@ -4,8 +4,9 @@
 name: Achive 🗃️ repository to Software Heritage
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
 
 jobs:
   swh-archive:
